@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>To Do List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,15 +11,22 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Bootstrap Tutorial</h1>      
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-  </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+<div id="app">
+    <div class="container" style="background-color: blue;">
+        <div class="jumbotron" style="color: blue;">
+            <h1>{{ listName }}</h1> 
+            <p>Enter your list item: {{ itemId }}</p>
+            <input></input>
+            <button v-on:click="addItem">Add</button>
+        </div>
+
+        <div  style="background-color: silver">
+            <p> list goes here.</p>
+        </div>      
+    </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="js.js"></script>
 </body>
 </html>
