@@ -8,6 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+    p.space {
+      margin: 35px;
+    }
+    </style>
 </head>
 <body>
 
@@ -16,13 +21,23 @@
         <div class="jumbotron" style="color: blue;">
             <h1>{{ listName }}</h1> 
             <p>Enter your list item: {{ itemId }}</p>
-            <div>
-            <row></row>
+            
+            <input v-model="list"> 
+            <button @click="addItem"> Add </button>
+            
+            <div style="color:blue; background-color: blue;" >
+                <p class="space"> `</p>
             </div>
+            
+            <ul>
+                <li v-for="x in x">
+                    <item :list="list"></item>
+                </li>
+            </ul>
         </div>
 
         <div  style="color:blue">
-            <p> yo</p>
+            <p>`</p>
         </div>      
     </div>
 </div>
