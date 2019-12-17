@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>To Do List</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>To Do</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
   <style>
-    p.space {
-      margin: 35px;
+    body {
+  background-color: gray;
+  margin: 150px;
     }
-    </style>
+  .complete {
+      text-decoration: line-through;
+    }
+  </style>
+  
 </head>
 <body>
-
-<div id="app">
-    <div class="container" style="background-color: blue;">
-        <div class="jumbotron" style="color: blue;">
-            <h1>{{ listName }}</h1> 
-            <p>Enter your list item: {{ itemId }}</p>
-            
-            <input v-model="list"> 
-            <button @click="addItem"> Add </button>
-            
-            <div style="color:blue; background-color: blue;" >
-                <p class="space"> `</p>
+<div class="container" style="background-color: blue;"></div>
+    <div class="jumbotron" style="color: blue">
+        <div id="App">
+            <row>Start of Webpage</row>
+            <form v-on:submit='addItem'>
+            <div>
+                <input type="text" class='form-control' v-model='Items.description'>
             </div>
-            
-            <ul>
-                <li v-for="x in x">
-                    <item :list="list"></item>
-                </li>
-            </ul>
+            <div style="margin: 15px">
+                <input type="submit" value='Add Item' class='btn btn-primary'>
+            </div>
+            </form>
+            <table class="table" >
+            <thead>
+                <th>Complete</th>
+                <th>description</th>
+                <th>Date</th>
+                <th>Remove</th>
+            </thead>
+            <tr v-for='(Items, index) in Items'>
+            <td><input type="checkbox" v-model="Items.completed"></td>
+            <td><span :class="{ complete: Items.completed }">{{ Items.description }}</span></td>
+            <td >{{ date[index] }}</td>
+            <td><button  v-on:click="deleteItem(Items)" class='btn btn-primary'>Remove</button></td>
+            </tr>
+            </table>
         </div>
-
-        <div  style="color:blue">
-            <p>`</p>
-        </div>      
     </div>
 </div>
+<script src="js.js">
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js.js"></script>
-
+</script>
 </body>
 </html>

@@ -1,66 +1,41 @@
 console.log("initialized");
-/*
+
 Vue.component('row', {
     template: `
     <div>
-    <input v-model="listDesc"> 
-    <button @click="addItem"> Add </button>
+    <h1> To Do {{  date  }}</h1>
+    <h2> Enter Item To Your List </h2>
     </div>
     `,
     
     data() {
         return { 
-            listDesc: null
-        }
-    }
-    
-})
-*/
-Vue.component('item', {
-    props: {
-        list: {
-            type: String
-        }
-    },
-    template: `
-    <div>
-    <div>
-    <button @click="acompleteItem">complete</button>
-    <button>delete</button>
-    </div>
-    {{list}}
-    <div>
-    <p> - - - - - - -</p>
-    </div>
-    </div>
-    `,
-    
-    data() {
-        return { 
-            list: "o",
-            methods: {
-                completeItem: function(){
-                    list.strike()
-                }
-            }
+            placeholder: 0
         }
     }
     
 })
 
-var app = new Vue({
-    el: '#app', 
+var App = new Vue({
+    el: '#App',
     data: {
-        list: "",
-        listName: "To Do",
-        x: 0,
-        itemId: []
+        date: [new Date],
+      Items: [
+        { description: 'Example Item', completed: false },
+      ]
     },
     methods: {
-        addItem: function(){
-            this.x += 1
-            this.itemId += this.x
-        }
+      addItem: function(bob) {
+        bob.preventDefault();
+        this.date.push(new Date()),
+        this.Items.push({
+        description: this.Items.description,
+          done: false
+        },
+        );
+    },
+      deleteItem: function(Items) {
+        this.Items.splice(this.Items.indexOf(Items), 1)
+      },
     }
-})
-
+  });
