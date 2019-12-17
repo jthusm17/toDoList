@@ -45,7 +45,7 @@
             <td><input type="checkbox" v-model="Items.completed"></td>
             <td><span :class="{ complete: Items.completed }">{{ Items.description }}</span></td>
             <td >{{ date[index] }}</td>
-            <td><button  v-on:click="deleteItem(Items)" class='btn btn-primary'>Remove</button></td>
+            <td><button  v-on:click="deleteItem(Items, date)" class='btn btn-primary'>Remove</button></td>
             </tr>
             </table>
         </div>

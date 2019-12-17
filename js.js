@@ -34,8 +34,9 @@ var App = new Vue({
         },
         );
     },
-      deleteItem: function(Items) {
+      deleteItem: function(Items, date) {
         this.Items.splice(this.Items.indexOf(Items), 1)
+        this.date.splice(date.indexOf(date), 1)
       },
     }
   });
